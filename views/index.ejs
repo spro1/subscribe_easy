@@ -2,14 +2,248 @@
 <html>
   <head>
     <title>메인화면 - 구독EASY</title>
-    <link href="/stylesheets/common.css" />
+    <link rel="stylesheet" href="/stylesheets/common.css" />
   </head>
   <body>
     <header>
-      <img src="/images/logo.png"/>
+      <div class="wrap container">
+        <div class="container">
+          <h1 class="logo">
+            <a href="#"><img src="/images/logo.png"/></a>
+          </h1>
+          <from action="/search" method="GET">
+            <div class="search">
+              <input placeholder="카테고리 검색" name="q" autocomplete="off"/>
+              <button class="searchBtn" type="submit">
+                <svg id="searchBtn" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="17.5781" cy="17.5781" r="5.32812" stroke-width="2"></circle>
+                  <path d="M21.6182 21.618L24.7501 24.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </from>
+        </div>
+        <nav class="gnb">
+          <ul>
+            <li>
+              <a href="#" style="color: red; font-weight: bold">MY 구독</a>
+            </li>
+            <li>
+              <a href="#">로그아웃</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
-
+      <section class="top">
+        <div class="wrap">
+          <div class="top-word">어떤 구독 서비스를 찾고 있나요?</div>
+          <div class="category">
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-book.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                전자책
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-car.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                자동차
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-flower.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                꽃, 식물
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-food.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                식료품
+              </div>
+            </div>
+          </div>
+          <div class="category">
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-movie.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                영화, 드라마
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-music.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                음악
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-news.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                뉴스, 잡지
+              </div>
+            </div>
+            <div class="category-box">
+              <div class="icon">
+                <a href="#">
+                  <img src="/images/icon-tool.png"/>
+                </a>
+              </div>
+              <div class="category-name">
+                도구
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="middle">
+        <div class="wrap">
+          <div class="middle-word">
+            <h2><strong>인기</strong> 구독 TOP</h2>
+            <p class="desc">가장 인기가 많은 구독서비스를 만나보세요</p>
+          </div>
+          <div class="middle-content">
+            <ul class="grid">
+              <li class="content-box">
+                <img class="content-logo" src="/images/netflix.png"/>
+                <h4 class="content-name">넷플릭스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/watcha.png"/>
+                <h4 class="content-name">왓챠</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/disney.png"/>
+                <h4 class="content-name">디즈니 플러스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/netflix.png"/>
+                <h4 class="content-name">넷플릭스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/watcha.png"/>
+                <h4 class="content-name">왓챠</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/disney.png"/>
+                <h4 class="content-name">디즈니 플러스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="middle">
+        <div class="wrap">
+          <div class="middle-word">
+            <h2><strong>20대 남자</strong> 구독 TOP</h2>
+            <p class="desc">나와 비슷한 구독자들이 많은 구독 서비스를 만나보세요</p>
+          </div>
+          <div class="middle-content">
+            <ul class="grid">
+              <li class="content-box">
+                <img class="content-logo" src="/images/netflix.png"/>
+                <h4 class="content-name">넷플릭스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/watcha.png"/>
+                <h4 class="content-name">왓챠</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+              <li class="content-box">
+                <img class="content-logo" src="/images/disney.png"/>
+                <h4 class="content-name">디즈니 플러스</h4>
+                <p class="desc">영화, TV 프로그램 무제한 감상</p>
+                <a href="#">
+                  <div class="detail">
+                    가격비교/상세보기
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
+  <footer>
+    <div class="wrap">
+      <p>Copyright © 2022 YUNDOL INHA University Project. All rights reserved.</p>
+    </div>
+  </footer>
   </body>
 </html>
