@@ -114,7 +114,7 @@ header > .wrap .container {
     align-items: center;
     width: fit-content;
     width: -moz-min-content;
-    margin: 0 !important;
+    margin: 0;
 }
 
 header > .wrap .container .logo {
@@ -316,4 +316,90 @@ footer .wrap{
     min-width: 128rem;
     max-width: 136.6rem;
     padding: 0 6.8rem;
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    header {
+        width: 100%;
+        margin-top: 30px;
+        position: relative;
+    }
+
+    header > .wrap {
+        padding: 0;
+        max-width: 350px;
+        min-width: 0;
+        flex-direction: column;
+    }
+
+    header > .wrap .container {
+        margin-top: auto;
+        flex-direction: column;
+        width: 350px;
+    }
+
+    header > .wrap .container .logo {
+        margin: 0 auto;
+    }
+
+    header > .wrap .container .search {
+        margin-top: 20px;
+        width: 350px;
+    }
+
+    header > .wrap .container .search input {
+
+    }
+
+    header .gnb {
+        margin-top: 20px;
+    }
+
+    main .wrap {
+        max-width: 350px;
+        min-width: 350px;
+        padding: 0;
+    }
+
+    .top-word {
+        margin-top: 50px;
+        font-size: 22px;
+    }
+
+    .category {
+        display: grid;
+        grid-template-columns: 50% 50%;
+    }
+
+    section {
+        margin-bottom: 20px;
+    }
+
+    .middle-word .desc {
+        font-size: 1.4rem;
+    }
+
+    .category-box {
+        margin: auto;
+    }
+
+    .grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    footer .wrap {
+        max-width: 350px;
+        min-width: 350px;
+        padding: 0;
+    }
+
+    footer .wrap p{
+        font-size: 9px;
+    }
 }
