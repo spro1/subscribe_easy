@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>메인화면 - 구독EASY</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="stylesheet" href="/stylesheets/common.css" />
+  </head>
+  <body>
+    <header>
+      <div class="wrap container">
+        <div class="container">
+          <h1 class="logo">
+            <a href="/"><img src="/images/logo.png"/></a>
+          </h1>
+          <form action="/search" method="GET">
+            <div class="search">
+              <input type="search" placeholder="카테고리 검색" name="q" autocomplete="off"/>
+              <button class="searchBtn" type="submit">
+                <svg id="searchBtn" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="17.5781" cy="17.5781" r="5.32812" stroke-width="2"></circle>
+                  <path d="M21.6182 21.618L24.7501 24.75" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
+        <nav class="gnb">
+          <ul>
+            <% if(isAuthenticated){ %>
+            <li>
+              <a href="#" style="color: red; font-weight: bold">MY 구독</a>
+            </li>
+            <li>
+              <a href="/logout">로그아웃</a>
+            </li>
+            <% } else {%>
+            <li>
+              <a href="/login">로그인</a>
+            </li>
+            <% } %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="middle">
+        <div class="wrap">
+          <div class="middle-word">
+            <h2><strong><%= q %></strong> 검색 결과</h2>
+          </div>
+          <div class="middle-content">
+            <% if (result.length > 0) {%>
+            <ul class="grid">
+              <% for(var i in result){%>
+                <li class="content-box">
+                  <img class="content-logo" src="<%= result[i].logo %>"/>
+                  <h4 class="content-name"><%= result[i].name %></h4>
+                  <p class="desc"><%= result[i].description %></p>
+                  <a href="/detail/<%=result[i]._id%>">
+                    <div class="detail">
+                      가격비교/상세보기
+                    </div>
+                  </a>
+                </li>
+              <% } %>
+            </ul>
+            <% } else { %>
+              <p class="not-search">검색결과가 없습니다.<br/>다른 카테고리로 검색해보세요.</p>
+            <% } %>
+          </div>
+        </div>
+      </section>
+    </main>
+  <footer>
+    <div class="wrap">
+      <p>Copyright © 2022 INHA University Project. All rights reserved.</p>
+    </div>
+  </footer>
+  </body>
+</html>

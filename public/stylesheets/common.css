@@ -54,6 +54,19 @@ button {
     border: none;
 }
 
+/* IE의 경우 */
+input::-ms-clear,
+input::-ms-reveal{
+    display:none;
+}
+/* 크롬의 경우 */
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration{
+    display:none;
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -272,6 +285,7 @@ section {
     height: fit-content;
     margin: 0 auto;
     text-align: center;
+    display: block;
 }
 
 .content-box .content-logo{
@@ -290,6 +304,13 @@ section {
 .content-box .desc{
     font-size: 12px;
     line-height: 30px;
+
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break:break-all;
+    margin: 0 10px;
 }
 
 .content-box .detail{
@@ -301,6 +322,12 @@ section {
 
     line-height: 25px;
     font-size: 12px;
+}
+
+.not-search{
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
 }
 
 /* footer */
@@ -319,9 +346,17 @@ footer .wrap{
 }
 
 @media (max-width: 768px) {
+    li{
+        word-break:break-all;
+    }
+
     body {
         width: 350px;
         margin: 0 auto;
+    }
+
+    main {
+        margin-top: 100px;
     }
 
     header {

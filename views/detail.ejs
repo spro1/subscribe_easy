@@ -12,9 +12,9 @@
             <h1 class="logo">
                 <a href="/"><img src="/images/logo.png"/></a>
             </h1>
-            <from action="/search" method="GET">
+            <form action="/search" method="GET">
                 <div class="search">
-                    <input placeholder="카테고리 검색" name="q" autocomplete="off"/>
+                    <input type="search" placeholder="카테고리 검색" name="q" autocomplete="off"/>
                     <button class="searchBtn" type="submit">
                         <svg id="searchBtn" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="17.5781" cy="17.5781" r="5.32812" stroke-width="2"></circle>
@@ -22,7 +22,7 @@
                         </svg>
                     </button>
                 </div>
-            </from>
+            </form>
         </div>
         <nav class="gnb">
             <ul>
@@ -41,73 +41,64 @@
         <div class="wrap">
             <div class="content">
                 <div class="top-logo">
-                    <img src="/images/netflix.png"/>
+                    <img src="<%= content.logo %>"/>
                 </div>
                 <div class="content-desc">
                     <li>서비스명</li>
-                    <li>NETFLIX</li>
+                    <li><%= content.name %></li>
                 </div>
                 <div class="content-desc">
                     <li>카테고리</li>
-                    <li>영화, 드라마</li>
+                    <li>
+                        <% for(var i in content.category){%>
+                            <%= content.category[i]%>
+                        <% } %>
+                    </li>
                 </div>
                 <div class="content-desc">
                     <li>서비스 설명</li>
-                    <li>각종 시리즈, 영화, 애니메이션, 다큐멘터리 등 다양한 콘텐츠를
-                        여러 디바이스에서 시청할 수 있는 스트리밍 서비스</li>
+                    <li><%= content.description %></li>
                 </div>
                 <div class="content-desc">
                     <li>홈페이지</li>
-                    <a href="#" target="_blank"><li>https://www.netflix.com/kr</li></a>
+                    <a href="<%= content.homepage %>" target="_blank"><li><%= content.homepage %></li></a>
                 </div>
                 <div class="content-desc">
                     <li>가격 정책</li>
-                    <li>9,500 원 ~ 17,000 원</li>
+                    <% if(content.max_price === 0) { %>
+                    <li><%= content.min_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> 원</li>
+                    <% } else { %>
+                        <li>최소 <%= content.min_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %> 원 ~ 최대 <%= content.max_price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") %>원</li>
+                    <% } %>
                 </div>
             </div>
         </div>
     </section>
+    <% if(sim.length > 0){%>
     <section class="middle">
         <div class="wrap">
             <div class="middle-word">
-                <h2><strong>넷플릭스</strong>와 비슷한 다른 구독 서비스</h2>
+                <h2><strong><%= content.name %></strong>와 비슷한 다른 구독 서비스</h2>
             </div>
             <div class="middle-content">
                 <ul class="grid">
-                    <li class="content-box">
-                        <img class="content-logo" src="/images/netflix.png"/>
-                        <h4 class="content-name">넷플릭스</h4>
-                        <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                        <a href="#">
-                            <div class="detail">
-                                가격비교/상세보기
-                            </div>
-                        </a>
-                    </li>
-                    <li class="content-box">
-                        <img class="content-logo" src="/images/watcha.png"/>
-                        <h4 class="content-name">왓챠</h4>
-                        <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                        <a href="#">
-                            <div class="detail">
-                                가격비교/상세보기
-                            </div>
-                        </a>
-                    </li>
-                    <li class="content-box">
-                        <img class="content-logo" src="/images/disney.png"/>
-                        <h4 class="content-name">디즈니 플러스</h4>
-                        <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                        <a href="#">
-                            <div class="detail">
-                                가격비교/상세보기
-                            </div>
-                        </a>
-                    </li>
+                    <% for(var i = 0; i<sim.length; i++){%>
+                        <li class="content-box">
+                            <img class="content-logo" src="<%= sim[i].logo %>"/>
+                            <h4 class="content-name"><%= sim[i].name %></h4>
+                            <p class="desc"><%= sim[i].description %></p>
+                            <a href="/detail/<%=sim[i]._id%>">
+                                <div class="detail">
+                                    가격비교/상세보기
+                                </div>
+                            </a>
+                        </li>
+                    <%}%>
                 </ul>
             </div>
         </div>
     </section>
+    <% } %>
 </main>
 <footer>
     <div class="wrap">

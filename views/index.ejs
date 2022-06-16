@@ -10,11 +10,11 @@
       <div class="wrap container">
         <div class="container">
           <h1 class="logo">
-            <a href="#"><img src="/images/logo.png"/></a>
+            <a href="/"><img src="/images/logo.png"/></a>
           </h1>
-          <from action="/search" method="GET">
+          <form action="/search" method="GET">
             <div class="search">
-              <input placeholder="카테고리 검색" name="q" autocomplete="off"/>
+              <input type="search" placeholder="카테고리 검색" name="q" autocomplete="off"/>
               <button class="searchBtn" type="submit">
                 <svg id="searchBtn" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="17.5781" cy="17.5781" r="5.32812" stroke-width="2"></circle>
@@ -22,16 +22,22 @@
                 </svg>
               </button>
             </div>
-          </from>
+          </form>
         </div>
         <nav class="gnb">
           <ul>
-            <li>
-              <a href="#" style="color: red; font-weight: bold">MY 구독</a>
-            </li>
-            <li>
-              <a href="#">로그아웃</a>
-            </li>
+            <% if(isAuthenticated){ %>
+              <li>
+                <a href="#" style="color: red; font-weight: bold">MY 구독</a>
+              </li>
+              <li>
+                <a href="/logout">로그아웃</a>
+              </li>
+            <% } else {%>
+              <li>
+                <a href="/login">로그인</a>
+              </li>
+            <% } %>
           </ul>
         </nav>
       </div>
@@ -43,7 +49,7 @@
           <div class="category">
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=전자책">
                   <img src="/images/icon-book.png"/>
                 </a>
               </div>
@@ -53,7 +59,7 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=자동차">
                   <img src="/images/icon-car.png"/>
                 </a>
               </div>
@@ -63,7 +69,7 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=꽃">
                   <img src="/images/icon-flower.png"/>
                 </a>
               </div>
@@ -73,7 +79,7 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=식료품">
                   <img src="/images/icon-food.png"/>
                 </a>
               </div>
@@ -85,7 +91,7 @@
           <div class="category">
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=영화">
                   <img src="/images/icon-movie.png"/>
                 </a>
               </div>
@@ -95,7 +101,7 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=음악">
                   <img src="/images/icon-music.png"/>
                 </a>
               </div>
@@ -105,7 +111,7 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=뉴스">
                   <img src="/images/icon-news.png"/>
                 </a>
               </div>
@@ -115,12 +121,12 @@
             </div>
             <div class="category-box">
               <div class="icon">
-                <a href="#">
+                <a href="/search?q=편의">
                   <img src="/images/icon-tool.png"/>
                 </a>
               </div>
               <div class="category-name">
-                도구
+                편의
               </div>
             </div>
           </div>
@@ -134,66 +140,18 @@
           </div>
           <div class="middle-content">
             <ul class="grid">
+              <% for(var i=0; i<6; i++){%>
               <li class="content-box">
-                <img class="content-logo" src="/images/netflix.png"/>
-                <h4 class="content-name">넷플릭스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
+                <img class="content-logo" src="<%= result[i].logo %>"/>
+                <h4 class="content-name"><%= result[i].name %></h4>
+                <p class="desc"><%= result[i].description %></p>
+                <a href="/detail/<%=result[i]._id%>">
                   <div class="detail">
                     가격비교/상세보기
                   </div>
                 </a>
               </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/watcha.png"/>
-                <h4 class="content-name">왓챠</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/disney.png"/>
-                <h4 class="content-name">디즈니 플러스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/netflix.png"/>
-                <h4 class="content-name">넷플릭스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/watcha.png"/>
-                <h4 class="content-name">왓챠</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/disney.png"/>
-                <h4 class="content-name">디즈니 플러스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
+              <% } %>
             </ul>
           </div>
         </div>
@@ -206,36 +164,18 @@
           </div>
           <div class="middle-content">
             <ul class="grid">
-              <li class="content-box">
-                <img class="content-logo" src="/images/netflix.png"/>
-                <h4 class="content-name">넷플릭스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/watcha.png"/>
-                <h4 class="content-name">왓챠</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
-              <li class="content-box">
-                <img class="content-logo" src="/images/disney.png"/>
-                <h4 class="content-name">디즈니 플러스</h4>
-                <p class="desc">영화, TV 프로그램 무제한 감상</p>
-                <a href="#">
-                  <div class="detail">
-                    가격비교/상세보기
-                  </div>
-                </a>
-              </li>
+              <% for(var i=result.length-1; i>result.length-4; i--){%>
+                <li class="content-box">
+                  <img class="content-logo" src="<%= result[i].logo %>"/>
+                  <h4 class="content-name"><%= result[i].name %></h4>
+                  <p class="desc"><%= result[i].description %></p>
+                  <a href="/detail/<%=result[i]._id%>">
+                    <div class="detail">
+                      가격비교/상세보기
+                    </div>
+                  </a>
+                </li>
+              <% } %>
             </ul>
           </div>
         </div>
