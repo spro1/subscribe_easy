@@ -26,12 +26,18 @@
         </div>
         <nav class="gnb">
             <ul>
-                <li>
-                    <a href="#" style="color: red; font-weight: bold">MY 구독</a>
-                </li>
-                <li>
-                    <a href="#">로그아웃</a>
-                </li>
+                <% if(isAuthenticated){ %>
+                    <li>
+                        <a href="#" style="color: red; font-weight: bold">MY 구독</a>
+                    </li>
+                    <li>
+                        <a href="/logout">로그아웃</a>
+                    </li>
+                <% } else {%>
+                    <li>
+                        <a href="/login">로그인</a>
+                    </li>
+                <% } %>
             </ul>
         </nav>
     </div>
@@ -82,7 +88,8 @@
             </div>
             <div class="middle-content">
                 <ul class="grid">
-                    <% for(var i = 0; i<sim.length; i++){%>
+                    <% if(sim.length > 3) {%>
+                    <% for(var i=sim.length-1; i>sim.length-4; i--){%>
                         <li class="content-box">
                             <img class="content-logo" src="<%= sim[i].logo %>"/>
                             <h4 class="content-name"><%= sim[i].name %></h4>
@@ -94,6 +101,20 @@
                             </a>
                         </li>
                     <%}%>
+                    <%} else {%>
+                            <% for(var i in sim){%>
+                                <li class="content-box">
+                                    <img class="content-logo" src="<%= sim[i].logo %>"/>
+                                    <h4 class="content-name"><%= sim[i].name %></h4>
+                                    <p class="desc"><%= sim[i].description %></p>
+                                    <a href="/detail/<%=sim[i]._id%>">
+                                        <div class="detail">
+                                            가격비교/상세보기
+                                        </div>
+                                    </a>
+                                </li>
+                            <%}%>
+                    <% } %>
                 </ul>
             </div>
         </div>
